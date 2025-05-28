@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Manager</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        input, button { margin: 5px; padding: 5px; }
+        #events { margin-top: 20px; }
+        .event { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+<h1>Event Manager</h1>
+
+<h2>Dodaj nowe wydarzenie 17:31</h2>
+<input id="title" placeholder="Tytuł" />
+<input id="category" placeholder="Kategoria" />
+<input id="date" type="date" />
+<input id="capacity" placeholder="Ilość miejsc" type="number" />
+<input id="location" placeholder="Lokalizacja" />
+
+<button onclick="addEvent()">Dodaj</button>
+
+<h2>Lista wydarzeń</h2>
+<button onclick="loadEvents()">Odśwież</button>
+<div id="events"></div>
+
+<script>
+    const API_URL = "http://localhost:8081/api/events";
+
+    function loadEvents() {
+        fetch(API_URL)
+            .then(res => {
+                if (!res.ok) throw new Error(`Błąd pobierania: ${res.status}`);
+                return res.json();
+            })
+            .then(events => {
+                const container = document.getElementById("events");
+                container.innerHTML = "";
+                events.forEach(e => {
+                    container.innerHTML += `
+                      <div class="event">
+                        <strong>${e.name}</strong><br>
+                        Kategoria: ${e.category}<br>
+                        Data: ${e.date}<br>
+                        Miejsca: ${e.seatsTotal}
+                      </div>`;
+                });
+            })
+            .catch(err => console.error(err));
+    }
+
+    function addEvent() {
+        const event = {
+            name: document.getElementById("title").value,
+            category: document.getElementById("category").value,
+            date: document.getElementById("date").value,
+            location: document.getElementById("location").value,
+            seatsTotal: parseInt(document.getElementById("capacity").value, 10)
+        };
+
+        fetch(`${API_URL}/admin`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(event)
+        })
+            .then(res => {
+                if (!res.ok) throw new Error(`Błąd dodawania: ${res.status}`);
+                return res.json();
+            })
+            .then(() => {
+                // wyczyść formularz
+                document.getElementById("title").value = "";
+                document.getElementById("category").value = "";
+                document.getElementById("date").value = "";
+                document.getElementById("capacity").value = "";
+                loadEvents();
+            })
+            .catch(err => console.error(err));
+    }
+
+    window.onload = loadEvents;
+</script>
+</body>
+</html>
