@@ -2,6 +2,8 @@ package com.example.eventmanager.model;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "reservations")
 public class Reservation {
@@ -16,6 +18,15 @@ public class Reservation {
     @ManyToOne
     private Event event;
 
+    private LocalDateTime reservationDate;
+
+    public LocalDateTime getReservationDate() {
+        return reservationDate;
+    }
+
+    public void setReservationDate(LocalDateTime reservationDate) {
+        this.reservationDate = reservationDate;
+    }
     // --- Gettery i Settery ---
 
     public Long getId() {
@@ -41,4 +52,6 @@ public class Reservation {
     public void setEvent(Event event) {
         this.event = event;
     }
+
+
 }
