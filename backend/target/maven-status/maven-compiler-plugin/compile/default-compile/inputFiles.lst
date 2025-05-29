@@ -3,10 +3,12 @@ C:\Users\Kamil Wrona\Desktop\Event_Manager\Event_Manager\backend\src\main\java\c
 C:\Users\Kamil Wrona\Desktop\Event_Manager\Event_Manager\backend\src\main\java\com\example\eventmanager\dto\AuthResponse.java
 C:\Users\Kamil Wrona\Desktop\Event_Manager\Event_Manager\backend\src\main\java\com\example\eventmanager\dto\EventDTO.java
 C:\Users\Kamil Wrona\Desktop\Event_Manager\Event_Manager\backend\src\main\java\com\example\eventmanager\dto\RegisterRequest.java
+C:\Users\Kamil Wrona\Desktop\Event_Manager\Event_Manager\backend\src\main\java\com\example\eventmanager\config\SecurityBeansConfig.java
 C:\Users\Kamil Wrona\Desktop\Event_Manager\Event_Manager\backend\src\main\java\com\example\eventmanager\config\JwtAuthFilter.java
 C:\Users\Kamil Wrona\Desktop\Event_Manager\Event_Manager\backend\src\main\java\com\example\eventmanager\EventManagerApplication.java
 C:\Users\Kamil Wrona\Desktop\Event_Manager\Event_Manager\backend\src\main\java\com\example\eventmanager\config\SecurityConfig.java
 C:\Users\Kamil Wrona\Desktop\Event_Manager\Event_Manager\backend\src\main\java\com\example\eventmanager\model\User.java
+C:\Users\Kamil Wrona\Desktop\Event_Manager\Event_Manager\backend\src\main\java\com\example\eventmanager\service\CustomUserDetailsService.java
 C:\Users\Kamil Wrona\Desktop\Event_Manager\Event_Manager\backend\src\main\java\com\example\eventmanager\repository\UserRepository.java
 C:\Users\Kamil Wrona\Desktop\Event_Manager\Event_Manager\backend\src\main\java\com\example\eventmanager\model\Event.java
 C:\Users\Kamil Wrona\Desktop\Event_Manager\Event_Manager\backend\src\main\java\com\example\eventmanager\repository\EventRepository.java
@@ -17,4 +19,5 @@ C:\Users\Kamil Wrona\Desktop\Event_Manager\Event_Manager\backend\src\main\java\c
 C:\Users\Kamil Wrona\Desktop\Event_Manager\Event_Manager\backend\src\main\java\com\example\eventmanager\service\JwtService.java
 C:\Users\Kamil Wrona\Desktop\Event_Manager\Event_Manager\backend\src\main\java\com\example\eventmanager\service\AuthService.java
 C:\Users\Kamil Wrona\Desktop\Event_Manager\Event_Manager\backend\src\main\java\com\example\eventmanager\dto\ReservationDTO.java
+C:\Users\Kamil Wrona\Desktop\Event_Manager\Event_Manager\backend\src\main\java\com\example\eventmanager\config\SwaggerConfig.java
 C:\Users\Kamil Wrona\Desktop\Event_Manager\Event_Manager\backend\src\main\java\com\example\eventmanager\config\WebConfig.java

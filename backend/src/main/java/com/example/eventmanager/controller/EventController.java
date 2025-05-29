@@ -2,62 +2,54 @@ package com.example.eventmanager.controller;
 
 import com.example.eventmanager.model.Event;
 import com.example.eventmanager.repository.EventRepository;
-//import lombok.RequiredArgsConstructor;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
-import java.time.LocalDate;
 import java.util.List;
 
+@SecurityRequirement(name = "basicAuth")
 @RestController
 @RequestMapping("/api/events")
 public class EventController {
 
-    private final EventRepository eventRepository;
+    private final EventRepository eventRepo;
 
-    public EventController(EventRepository eventRepository) {
-        this.eventRepository = eventRepository;
+    public EventController(EventRepository eventRepo) {
+        this.eventRepo = eventRepo;
     }
 
     @GetMapping
-    public List<Event> getAllEvents() {
-        return eventRepository.findAll();
+    public List<Event> getAll() {
+        return eventRepo.findAll();
     }
 
-    @GetMapping("/search/name")
-    public List<Event> searchByName(@RequestParam String name) {
-        return eventRepository.findByNameContainingIgnoreCase(name);
-    }
-
-    @GetMapping("/search/date")
-    public List<Event> searchByDate(@RequestParam String date) {
-        return eventRepository.findByDate(LocalDate.parse(date));
-    }
-
-    @GetMapping("/search/category")
-    public List<Event> searchByCategory(@RequestParam String category) {
-        return eventRepository.findByCategory(category);
-    }
-
-    // ADMIN
- @PostMapping("/admin")
+    @PostMapping("/admin")
+    @PreAuthorize("hasRole('ADMIN')")
     public Event addEvent(@RequestBody Event event) {
-        return eventRepository.save(event);
+        return eventRepo.save(event);
     }
 
     @PutMapping("/admin/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public Event updateEvent(@PathVariable Long id, @RequestBody Event updated) {
-        return eventRepository.findById(id).map(event -> {
-            event.setName(updated.getName());
-            event.setDate(updated.getDate());
-            event.setCategory(updated.getCategory());
-            event.setLocation(updated.getLocation());
-            event.setSeatsTotal(updated.getSeatsTotal());
-            return eventRepository.save(event);
-        }).orElseThrow(() -> new RuntimeException("Event not found"));
+        return eventRepo.findById(id)
+                .map(e -> {
+                    e.setName(updated.getName());
+                    e.setDate(updated.getDate());
+                    e.setCategory(updated.getCategory());
+                    e.setLocation(updated.getLocation());
+                    e.setSeatsTotal(updated.getSeatsTotal());
+                    return eventRepo.save(e);
+                })
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     @DeleteMapping("/admin/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public void deleteEvent(@PathVariable Long id) {
-        eventRepository.deleteById(id);
+        eventRepo.deleteById(id);
     }
 }
