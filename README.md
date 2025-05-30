@@ -62,21 +62,7 @@ src/main/resources/db/migration/
 
 ##Struktura repozytorium: 
 
-Event_Manager
-├── backend/
-│   ├── src/
-│   │   ├── main/
-│   │   │   ├── java/com/example/eventmanager/
-│   │   │   └── resources/
-│   │   └── test/
-│   │       └── java/com/example/eventmanager/
-│   ├── Dockerfile
-│   └── pom.xml
-├── frontend/
-│   ├── index.html 
-│   └── Dockerfile
-├── docker-compose.yml
-└── README.md
+![repoStructure](https://github.com/user-attachments/assets/3c2bcc2b-f305-4f21-a46f-90c7311667d6)
 
 ##Testy
 
