@@ -57,6 +57,8 @@ Migracje zarządzane za pomocą Flyway
 Pliki migracyjne znajdują się w:
 
 src/main/resources/db/migration/
+![erd](https://github.com/user-attachments/assets/5ae3abe4-3bc9-4b9f-a5d8-aec2b141d37d)
+![databaseview](https://github.com/user-attachments/assets/46ad1466-b28e-4ba1-ba8e-71f688ac3bd0)
 
 ##Struktura repozytorium: 
 
@@ -80,9 +82,11 @@ Event_Manager
 
 - Testy jednostkowe i integracyjne z wykorzystaniem JUnit 5.
 - Pokrycie kodu > 80% (potwierdzone przez JaCoCo).
+  ![jacoco](https://github.com/user-attachments/assets/8a2d6fd3-ffa3-4c40-baf4-a8e3388645ce)
 - Aby uruchomić testy:  
   
   mvn clean verify
+
 
 ##Docker
 
@@ -91,11 +95,20 @@ docker-compose build
 docker-compose up
 
 Instrukcja uruchomienia: 
+
 git clone: https://github.com/KamilW-git/Event_Manager
+
 cd Event_Manager
+
 docker-compose build
+
 docker-compose up
 
+![logview](https://github.com/user-attachments/assets/4ebafc5f-dcba-4576-8a1d-1c9b75634a3d)
+
+![adminview](https://github.com/user-attachments/assets/19bf4ea2-2415-41fd-b13c-5701cf1a2125)
+
+![userview](https://github.com/user-attachments/assets/cf154c65-d593-40db-90b0-37a6246205b7)
 
   ##Autor
 
