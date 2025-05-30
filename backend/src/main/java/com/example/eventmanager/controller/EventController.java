@@ -2,6 +2,9 @@ package com.example.eventmanager.controller;
 
 import com.example.eventmanager.model.Event;
 import com.example.eventmanager.repository.EventRepository;
+import com.example.eventmanager.strategy.EventFilterContext;
+import com.example.eventmanager.strategy.FilterByAvailableSeats;
+import com.example.eventmanager.strategy.FilterByCategory;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -51,5 +54,19 @@ public class EventController {
     @PreAuthorize("hasRole('ADMIN')")
     public void deleteEvent(@PathVariable Long id) {
         eventRepo.deleteById(id);
+    }
+
+    @GetMapping("/filter/by-category")
+    public List<Event> filterByCategory(@RequestParam String category) {
+        EventFilterContext ctx = new EventFilterContext();
+        ctx.setStrategy(new FilterByCategory(category));
+        return ctx.applyFilter(eventRepo.findAll());
+    }
+
+    @GetMapping("/filter/available")
+    public List<Event> filterByAvailability() {
+        EventFilterContext ctx = new EventFilterContext();
+        ctx.setStrategy(new FilterByAvailableSeats());
+        return ctx.applyFilter(eventRepo.findAll());
     }
 }
