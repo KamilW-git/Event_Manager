@@ -21,7 +21,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    // --- GETTERY I SETTERY ---
+
     public Long getId() {
         return id;
     }

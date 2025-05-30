@@ -95,4 +95,32 @@ public class ReservationController {
         return ResponseEntity.ok("Zarezerwowano");
     }
 
+    public ResponseEntity<?> createReservation(ReservationDTO dto, String testuser) {
+        User user = userRepo.findByUsername(testuser)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        Event event = eventRepo.findById(dto.getEventId())
+                .orElseThrow(() -> new RuntimeException("Event not found"));
+
+        if (event.getSeatsTaken() >= event.getSeatsTotal()) {
+            return ResponseEntity.badRequest().body("Brak dostępnych miejsc");
+        }
+
+        long count = reservationRepo.countByUserIdAndEventId(user.getId(), event.getId());
+        if (count >= 2) {
+            return ResponseEntity.badRequest().body("Można zarezerwować maksymalnie 2 miejsca na wydarzenie");
+        }
+
+        Reservation reservation = new Reservation();
+        reservation.setUser(user);
+        reservation.setEvent(event);
+        reservation.setReservationDate(LocalDateTime.now());
+
+        reservationRepo.save(reservation);
+
+        event.setSeatsTaken(event.getSeatsTaken() + 1);
+        eventRepo.save(event);
+
+        return ResponseEntity.ok("Zarezerwowano");
+    }
 }

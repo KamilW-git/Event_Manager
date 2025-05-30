@@ -1,0 +1,7 @@
+com\example\eventmanager\service\CustomUserDetailsServiceTest.class
+com\example\eventmanager\config\ConfigBeansTest.class
+com\example\eventmanager\controller\ReservationControllerTest$1.class
+com\example\eventmanager\strategy\EventFilterStrategyTest.class
+com\example\eventmanager\controller\EventControllerTest.class
+com\example\eventmanager\controller\ReservationControllerTest.class
+com\example\eventmanager\controller\AuthControllerTest.class

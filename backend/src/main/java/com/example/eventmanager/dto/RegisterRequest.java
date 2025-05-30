@@ -8,7 +8,7 @@ public class RegisterRequest {
     private String password;
     private User.Role role;
 
-    // Gettery i settery
+
     public String getUsername() { return username; }
     public void setUsername(String username) { this.username = username; }
 

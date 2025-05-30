@@ -18,7 +18,6 @@ public class Event {
     private int seatsTotal;
     private int seatsTaken;
 
-    // --- Gettery i Settery ---
 
     public Long getId() {
         return id;

@@ -27,7 +27,7 @@ public class Reservation {
     public void setReservationDate(LocalDateTime reservationDate) {
         this.reservationDate = reservationDate;
     }
-    // --- Gettery i Settery ---
+
 
     public Long getId() {
         return id;

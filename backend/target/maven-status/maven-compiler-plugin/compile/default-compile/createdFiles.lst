@@ -1,5 +1,6 @@
 com\example\eventmanager\dto\LoginRequest.class
 com\example\eventmanager\model\Event.class
+com\example\eventmanager\service\CustomUserDetailsService.class
 com\example\eventmanager\strategy\EventFilterStrategy.class
 com\example\eventmanager\dto\EventDTO.class
 com\example\eventmanager\config\SecurityBeansConfig.class
@@ -7,7 +8,6 @@ com\example\eventmanager\repository\UserRepository.class
 com\example\eventmanager\strategy\EventFilterContext.class
 com\example\eventmanager\config\WebConfig$1.class
 com\example\eventmanager\model\User$Role.class
-com\example\eventmanager\security\CustomUserDetailsService.class
 com\example\eventmanager\controller\ReservationController.class
 com\example\eventmanager\repository\ReservationRepository.class
 com\example\eventmanager\strategy\FilterByCategory.class
